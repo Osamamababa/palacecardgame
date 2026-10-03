@@ -179,6 +179,7 @@ body {
   display: flex;
   gap: clamp(15px, 4vmin, 40px);
   align-items: center;
+  z-index: 10;
 }
 
 .deck-area, .discard-area {

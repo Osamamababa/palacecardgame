@@ -28,6 +28,7 @@ let gameOver = false;
 let isUserActionInProgress = false;
 let activeModalResolve = null;
 let currentGameId = 0; // Tracks the active game session to prevent overlapping CPU loops
+let selectedPlayerCount = 4; 
 
 // --- Helper Functions ---
 function getCardRank(cardString) {
@@ -211,6 +212,7 @@ function checkWinCondition(player) {
     if (overlay) {
       overlay.classList.add('visible');
     }
+
     return true;
   }
   return false;
@@ -451,9 +453,24 @@ function findStartingPlayer(players) {
   return { startingPlayer: players[startingPlayerIndex], startingIndex: startingPlayerIndex };
 }
 
+function setPlayerCount(count) {
+    selectedPlayerCount = count;
+    
+    // Remove 'active' class from all player buttons
+    const buttons = document.querySelectorAll('.player-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add 'active' class to the clicked button
+    const activeBtn = document.querySelector(`.player-btn[data-players="${count}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+    }
+}
+
 function playPalace() {
   currentGameId++; // Invalidate any previous running game loops/timeouts
   const localGameId = currentGameId;
+  const playerCount = selectedPlayerCount;
 
   // (Keep the rest of your existing playPalace code right below this...)
   // Clear any existing victory overlay when starting a new game
@@ -473,11 +490,8 @@ function playPalace() {
   }
   deckOfCards = shuffle(deckOfCards);
 
-  const playerSelect = document.getElementById('player-select');
-  const selectedCount = playerSelect ? parseInt(playerSelect.value, 10) : 4;
-
   players = [new Player("user", "You", 0)];
-  for (let i = 1; i < selectedCount; i++) {
+  for (let i = 1; i < playerCount; i++) {
     players.push(new Player("cpu", `CPU ${i}`, i));
   }
 
@@ -498,7 +512,7 @@ function playPalace() {
 
   buildPlayerSeats();
   renderTable();
-  setupUserControls();
+  updateStartButtonDisplay();
 
   updateStatus(`The first move of the game belongs to: ${startingPlayer.name}!`);
 
@@ -507,10 +521,10 @@ function playPalace() {
   }
 }
 
-function setupUserControls() {
-  const controlsDiv = document.getElementById('controls');
-  if (controlsDiv) {
-    controlsDiv.innerHTML = '';
+function updateStartButtonDisplay() {
+  const gameStarted = document.getElementById('start-btn');
+  if (gameStarted) {
+    gameStarted.remove();
   }
 }
 

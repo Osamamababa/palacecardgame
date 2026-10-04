@@ -40,7 +40,7 @@ body {
 }
 
 /* --- Cleared/Burned Piles (Header Section) --- */
-#header-title-group {
+.header-title-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -104,304 +104,42 @@ body {
   z-index: 10;
 }
 
-/* --- Burger Menu Navigation --- */
-.burger-nav {
-    position: relative;
-    display: flex;
-    align-items: center;
+.game-setup {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
-/* The 3-Line Burger Icon */
-.burger-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 22px;
-    cursor: pointer;
-    z-index: 10;
+.game-setup label {
+  font-size: clamp(12px, 1.5vmin, 16px);
+  font-weight: bold;
 }
 
-.burger-icon span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #f8fafc;
-    border-radius: 2px;
-    transition: background-color 0.2s ease;
+.game-setup select {
+  background: #161b22;
+  color: #ffffff;
+  border: 1px solid #30363d;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 0.6vmin;
+  font-size: clamp(12px, 1.5vmin, 16px);
+  cursor: pointer;
 }
 
-.burger-nav:hover .burger-icon span {
-    background-color: #38bdf8;
-}
-
-/* --- Sliding Menu Drawer --- */
-.nav-sliding-menu {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    list-style: none;
-    background-color: #1e293b;
-    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.3);
-    
-    /* Slide out properties (overflow: visible allows popups to extend outside container bounds) */
-    max-width: 0;
-    opacity: 0;
-    overflow: visible;
-    pointer-events: none;
-    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out;
-    z-index: 5;
-}
-
-.burger-nav:hover .nav-sliding-menu {
-    max-width: 700px;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* --- Navigation Items Inside Drawer --- */
-.nav-sliding-menu li {
-    position: relative;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    font-weight: 500;
-    border-radius: 6px;
-    white-space: nowrap; /* Keeps "How To Play" and "New Game" on a single line */
-    transition: background-color 0.2s ease;
-}
-
-.nav-sliding-menu li:hover {
-    background-color: #334155;
-}
-
-.nav-sliding-menu a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-sliding-menu a:hover {
-  text-decoration: underline;
-}
-
-/* --- Dropdown Popups (Flush Alignment, Zero Gap for Hover Persistence) --- */
-.nav-sliding-menu li .how-to-play-popup,
-.nav-sliding-menu li .new-game-popup {
-    display: none;
-    position: absolute;
-    top: 100%; /* Sits directly flush against the bottom of the list item with zero gap */
-    right: 0;
-    left: auto;
-    background-color: #1e293b;
-    color: #f8fafc;
-    padding: 1.25rem;
-    border-radius: 0 0 8px 8px; /* Smooth rounded corners on the bottom */
-    border: 1px solid #334155;
-    border-top: none; /* Merges visually with the hovered menu item */
-    box-shadow: 0 15px 35px -3px rgba(0, 0, 0, 0.7);
-    text-align: left;
-    cursor: default;
-    box-sizing: border-box;
-    white-space: normal;
-}
-
-/* --- How To Play Rules Popup Styling (Forced Strict Containment) --- */
-.nav-sliding-menu li .how-to-play-popup {
-    width: min(85vw, 400px);
-    max-height: 380px;
-    overflow-y: auto;
-    overflow-x: hidden; /* Removes horizontal scrolling */
-    font-size: clamp(15px, 1.2vw, 13.5px); /* Readable, responsive scaling */
-    line-height: 1.45;
-    box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: #38bdf8 #334155;
-}
-
-/* Force every container, paragraph, and list item inside the box to wrap and fit safely */
-.nav-sliding-menu li .how-to-play-popup *,
-.nav-sliding-menu li .how-to-play-popup p,
-.nav-sliding-menu li .how-to-play-popup li,
-.nav-sliding-menu li .how-to-play-popup ul,
-.nav-sliding-menu li .how-to-play-popup h3 {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-wrap: anywhere !important; /* Guarantees long words wrap cleanly inside boundaries */
-    word-break: normal !important;
-    white-space: normal !important;
-}
-
-.nav-sliding-menu li .how-to-play-popup::-webkit-scrollbar {
-    width: 6px;
-}
-
-.nav-sliding-menu li .how-to-play-popup::-webkit-scrollbar-track {
-    background: #334155;
-    border-radius: 4px;
-}
-
-.nav-sliding-menu li .how-to-play-popup::-webkit-scrollbar-thumb {
-    background: #38bdf8;
-    border-radius: 4px;
-}
-
-.nav-sliding-menu li .how-to-play-popup h3 {
-    color: #38bdf8;
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
-}
-
-.nav-sliding-menu .how-to-play-popup ul {
-    display: block;
-    padding-left: 1.25rem;
-    list-style-type: disc;
-}
-
-.nav-sliding-menu .how-to-play-popup li {
-    padding: 0.25rem 0;
-    background-color: transparent !important;
-    cursor: default;
-    font-weight: normal;
-    color: #cbd5e1;
-    border-radius: 0;
-}
-
-.nav-sliding-menu .how-to-play-popup li:hover {
-    background-color: transparent !important;
-}
-
-.nav-sliding-menu li .how-to-play-popup strong {
-    color: #f8fafc;
-}
-
-/* --- New Game Popup Styling --- */
-.nav-sliding-menu li .new-game-popup {
-    width: 200px;
-}
-
-/* --- Reveal Dropdowns with Hover Bridge (Enables Cursor Interaction) --- */
-.nav-sliding-menu li {
-    position: relative; /* Ensures absolute children align to the list item */
-}
-
-/* Show popup when hovering the item or the popup itself */
-.nav-sliding-menu li:hover .how-to-play-popup,
-.nav-sliding-menu li:hover .new-game-popup,
-.nav-sliding-menu li .how-to-play-popup:hover,
-.nav-sliding-menu li .new-game-popup:hover {
-    display: block;
-}
-
-/* Invisible bridge over the 0.5rem gap so the mouse never loses hover state */
-.nav-sliding-menu li .how-to-play-popup::before,
-.nav-sliding-menu li .new-game-popup::before {
-    content: '';
-    position: absolute;
-    top: -0.5rem; /* Bridges the gap up to the list item */
-    left: 0;
-    width: 100%;
-    height: 0.5rem;
-    background: transparent;
-}
-
-/* --- New Game Popup & Interactive Player Buttons --- */
-.nav-sliding-menu li .new-game-popup {
-    width: 220px;
-    box-sizing: border-box;
-}
-
-.nav-sliding-menu .new-game-popup .popup-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #38bdf8;
-    text-align: left;
-}
-
-/* Player Button Grid Layout */
-.player-buttons-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-}
-
-.player-btn {
-    background-color: #0f172a;
-    color: #cbd5e1;
-    border: 2px solid #334155;
-    padding: 0.5rem 0;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.player-btn:hover {
-    border-color: #38bdf8;
-    color: #ffffff;
-    background-color: #1e293b;
-    transform: translateY(-1px);
-}
-
-/* Active/Selected State for Player Count Buttons */
-.player-btn.active {
-    background: linear-gradient(135deg, #38bdf8, #0284c7);
-    color: #ffffff;
-    border-color: #38bdf8;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
-}
-
-/* Emerald Start Button */
-.nav-sliding-menu .new-game-popup button#new-game-btn {
-    width: 100%;
-    padding: 0.65rem 1rem;
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-sliding-menu .new-game-popup button#new-game-btn:hover {
-    background: linear-gradient(135deg, #34d399, #10b981);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-}
-
-.nav-sliding-menu .new-game-popup button#new-game-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+.game-setup select:focus {
+  outline: none;
+  border-color: #58a6ff;
 }
 
 .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e293b;
-    color: #f8fafc;
-    padding: 0.75rem 2rem;
-    font-family: system-ui, -apple-system, sans-serif;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 10000; /* Ensures the top header and its dropdown menus sit above the table deck/discard pile */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 1vmin;
 }
 
-#new-game-btn {
+#start-btn {
   background: #238636;
   color: white;
   border: none;
@@ -413,7 +151,7 @@ body {
   font-size: clamp(12px, 1.5vmin, 16px);
 }
 
-#new-game-btn:hover { background: #2ea043; }
+#start-btn:hover { background: #2ea043; }
 
 .cleared-piles-section .cleared-piles-container {
   pointer-events: auto;
@@ -831,38 +569,6 @@ body {
   width: 100%;
 }
 
-#start-btn {
-    width: 23%;
-    padding: 1rem 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    /* background: linear-gradient(135deg, #10b981, #059669); Green Button */
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8); /* Medium blue gradient */
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: slow-fade 2s infinite ease-in-out;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-#start-btn:hover {
-    /* background: linear-gradient(135deg, #34d399, #10b981); Green Button */
-    background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Lighter blue on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-}
-
-#start-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
-}
-
 #controls .action-btn {
   background-color: #c05e63;
   color: #ffffff;
@@ -1004,117 +710,57 @@ body {
   100% { transform: translateY(-12px); }
 }
 
-@keyframes slow-fade {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.9; /* Fades out smoothly */
-                transform: scale(0.97); /* Very slight shrink as it fades */
-            }
-        }
-
-/* --- Vertical Table & Mobile Layout Optimization (768px and below) --- */
-@media screen and (max-width: 768px) {
-  body {
-    overflow-y: auto;
-  }
-
-  .game-container {
-    height: auto;
-    min-height: 100vh;
-    padding: var(--spacing-sm);
-  }
-
-  /* Turns the poker table into a vertical/tall oval shape */
-  .poker-table {
-    width: 94vw;
-    height: 72vh;
-    max-height: 560px;
-    margin: 1rem auto;
-    border-radius: 35vh; /* Vertical oval proportions */
-  }
-
-  /* Push the deck and discard pile down so they don't overlap CPU hands */
-  .table-center {
-    top: 55% !important;
-  }
-
-  /* Keep the user firmly anchored at the bottom center */
-  .seat-0 {
-    position: absolute !important;
-    bottom: -2% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 88vw !important;
-  }
-
- /* Arrange CPU hands in a neat triangular / arc cluster at the top of the vertical table */
-  .players-2 .seat-1 { 
-    top: 8% !important; 
-    left: 50% !important; 
-    transform: translateX(-50%) !important; 
-  }
-
-  .players-3 .seat-1 { 
-    top: 12% !important; 
-    left: 22% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-3 .seat-2 { 
-    top: 12% !important; 
-    left: 78% !important; 
-    transform: translateX(-50%) !important; 
-  }
-
-  .players-4 .seat-1 { 
-    top: 18% !important; 
-    left: 15% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-4 .seat-2 { 
-    top: 6% !important; 
-    left: 50% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-4 .seat-3 { 
-    top: 18% !important; 
-    left: 85% !important; 
-    transform: translateX(-50%) !important; 
-  }
-
-  .players-5 .seat-1 { 
-    top: 20% !important; 
-    left: 12% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-5 .seat-2 { 
-    top: 6% !important; 
-    left: 32% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-5 .seat-3 { 
-    top: 6% !important; 
-    left: 68% !important; 
-    transform: translateX(-50%) !important; 
-  }
-  .players-5 .seat-4 { 
-    top: 20% !important; 
-    left: 88% !important; 
-    transform: translateX(-50%) !important; 
-  }
-
-  /* Slightly scale down card layouts for mobile seats so they don't overlap */
-  .player-seat .cards-layout {
-    transform: scale(0.88);
-    transform-origin: center bottom;
-  }
-
-  /* Adjust start button width for mobile screens */
-  #start-btn {
-    width: 80% !important;
-    font-size: 1.2rem;
-    padding: 0.8rem;
-  }
-}
+.how-to-play-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .how-to-play-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: underline;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .how-to-play-title:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .how-to-play-popup {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 420px;
+      max-height: 500px;
+      overflow-y: auto;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .how-to-play-container:hover .how-to-play-popup,
+    .how-to-play-container.active .how-to-play-popup {
+      display: block;
+    }
+    .how-to-play-popup h3 {
+      margin-top: 0;
+      color: #ffd700;
+      border-bottom: 1px solid #444;
+      padding-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .how-to-play-popup ul {
+      padding-left: 20px;
+      margin: 10px 0 0 0;
+    }
+    .how-to-play-popup li {
+      margin-bottom: 10px;
+    }

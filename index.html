@@ -10,64 +10,50 @@
   <div class="game-container">
     <!-- Header Controls -->
     <header class="top-bar">
-      <h1 id="header-title-group">Palace</h1>
-
-      <!-- Burger Menu Navigation -->
-      <nav class="burger-nav">
-        <div class="burger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="header-title-group">
+        <h1>Palace Card Game</h1>
+      </div>
+      <div class="game-setup">
+        <div class="how-to-play-container" id="how-to-play-wrapper">
+          <span class="how-to-play-title">How To Play</span>
+          <div class="how-to-play-popup">
+            <h3>Official Rules of Palace</h3>
+            <ul>
+              <li><strong>Card Hierarchy:</strong> Standard ranking applies from 3 (lowest) up to Ace (highest), with specific exceptions for power cards.</li>
+              <li><strong>Play Requirements:</strong> To successfully discard, a played card must be equal to or higher in rank than the top card of the discard pile. If a player cannot make a legal play, they must forfeit their turn and pick up the entire discard pile into their hand.</li>
+              <li><strong>Power Cards (2s and 10s):</strong> 
+                <ul>
+                  <li><strong>Twos (2):</strong> Act as wild cards that can be played on any rank. Playing a 2 resets hierarchy of the discard pile and grants the same player an immediate bonus turn to play any card of their choosing.</li>
+                  <li><strong>Tens (10):</strong> Share the hierarchy resetting capability of 2s, but additionally clear the discard pile entirely from the game, permanently removing all discarded cards from the active match.</li>
+                </ul>
+              </li>
+              <li><strong>Four-of-a-Kind Bonus:</strong> If four cards of identical rank are played consecutively onto the discard pile, the pile is cleared identically to a 10, and the player responsible for placing the fourth card earns an immediate bonus turn.</li>
+              <li><strong>Hand Replenishment:</strong> Provided the stock deck contains cards, all players are required to maintain a minimum hand size of three cards at the conclusion of their turn.</li>
+              <li><strong>Consecutive Matching Plays:</strong> During a player's turn (Player A), until the subsequent player (Player B) completes a turn, Player A retains the right to play any additional cards matching the rank of their previous play.</li>
+              <li><strong>Palace Progression:</strong> 
+                <ul>
+                  <li>Players may only draw from and play their <strong>Face-Up Palace Cards</strong> once their hand is completely empty.</li>
+                  <li>Players may only access and play their <strong>Face-Down Palace Cards</strong> once both their hand and face-up cards are entirely depleted.</li>
+                  <li>Face-up and face-down palace cards must be played strictly one at a time, with the exception of 2s and 10s.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        
-        <ul class="nav-sliding-menu">
-          <li>
-            How To Play
-            <div class="how-to-play-popup">
-              <h3>Official Rules of Palace</h3>
-              <ul>
-                <li><strong>Card Hierarchy:</strong> Standard ranking applies from 3 (lowest) up to Ace (highest), with specific exceptions for power cards.</li>
-                <li><strong>Play Requirements:</strong> To successfully discard, a played card must be equal to or higher in rank than the top card of the discard pile. If a player cannot make a legal play, they must forfeit their turn and pick up the entire discard pile into their hand.</li>
-                <li><strong>Power Cards (2s and 10s):</strong> 
-                  <ul>
-                    <li><strong>Twos (2):</strong> Act as wild cards that can be played on any rank. Playing a 2 resets hierarchy of the discard pile and grants the same player an immediate bonus turn to play any card of their choosing.</li>
-                    <li><strong>Tens (10):</strong> Share the hierarchy resetting capability of 2s, but additionally clear the discard pile entirely from the game, permanently removing all discarded cards from the active match.</li>
-                  </ul>
-                </li>
-                <li><strong>Four-of-a-Kind Bonus:</strong> If four cards of identical rank are played consecutively onto the discard pile, the pile is cleared identically to a 10, and the player responsible for placing the fourth card earns an immediate bonus turn.</li>
-                <li><strong>Hand Replenishment:</strong> Provided the stock deck contains cards, all players are required to maintain a minimum hand size of three cards at the conclusion of their turn.</li>
-                <li><strong>Consecutive Matching Plays:</strong> During a player's turn (Player A), until the subsequent player (Player B) completes a turn, Player A retains the right to play any additional cards matching the rank of their previous play.</li>
-                <li><strong>Palace Progression:</strong> 
-                  <ul>
-                    <li>Players may only draw from and play their <strong>Face-Up Palace Cards</strong> once their hand is completely empty.</li>
-                    <li>Players may only access and play their <strong>Face-Down Palace Cards</strong> once both their hand and face-up cards are entirely depleted.</li>
-                    <li>Face-up and face-down palace cards must be played strictly one at a time, with the exception of 2s and 10s.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            New Game
-            <div class="new-game-popup">
-              <span class="popup-label">Select Players:</span>
-              <div class="player-buttons-grid">
-                <button type="button" class="player-btn" data-players="2" onclick="setPlayerCount(2)">2</button>
-                <button type="button" class="player-btn" data-players="3" onclick="setPlayerCount(3)">3</button>
-                <button type="button" class="player-btn active" data-players="4" onclick="setPlayerCount(4)">4</button>
-                <button type="button" class="player-btn" data-players="5" onclick="setPlayerCount(5)">5</button>
-              </div>
-              <button id="new-game-btn" onclick="playPalace()">New Game</button>
-            </div>
-          </li>
-        </ul>
-      </nav>
-
+        <label for="player-select">Players:</label>
+        <select id="player-select">
+          <option value="2">2 Players (1 CPU)</option>
+          <option value="3">3 Players (2 CPUs)</option>
+          <option value="4" selected>4 Players (3 CPUs)</option>
+          <option value="5">5 Players (4 CPUs)</option>
+        </select>
+        <button id="start-btn" onclick="playPalace()">New Game</button>
+      </div>
     </header>
 
     <div class="cleared-piles-section">
-      <div id="cleared-piles-container" class="cleared-piles-container"></div>
-    </div>
+          <div id="cleared-piles-container" class="cleared-piles-container"></div>
+        </div>
 
     <!-- Round Table Area -->
     <div class="poker-table">
@@ -106,8 +92,8 @@
         <div id="user-face-up-group" class="face-up-group"></div>
       </div>
 
-      <button id="start-btn" onclick="playPalace()">Start!</button>
-      <!-- <div id="controls" class="action-buttons"></div> -->
+      <div id="status-box">Press "New Game" to start...</div>
+      <div id="controls" class="action-buttons"></div>
     </div>
   </div>
 

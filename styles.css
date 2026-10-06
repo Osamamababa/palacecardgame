@@ -47,6 +47,240 @@ body {
   gap: var(--spacing-lg);
 }
 
+/* --- Hamburger Menu Styling --- */
+.hamburger-menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 36px;
+  height: 30px;
+}
+
+.hamburger-btn:hover {
+  opacity: 0.8;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hamburger-btn:hover span {
+  background-color: #58a6ff;
+}
+
+.hamburger-dropdown {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 12px);
+  transform: translateY(-50%) translateX(15px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.hamburger-menu-container:hover .hamburger-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Style for New Game menu option wrapper */
+.hamburger-dropdown .new-game-wrapper {
+  display: block;
+  position: relative;
+}
+
+.hamburger-dropdown .new-game-title,
+.hamburger-dropdown .how-to-play-title {
+  display: block;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.hamburger-dropdown .new-game-title:hover,
+.hamburger-dropdown .how-to-play-title:hover {
+  background: transparent;
+  color: #58a6ff;
+}
+
+.new-game-wrapper .new-game-container {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 240px;
+  background: #0d1b2a;
+  border: 1px solid #1f6feb;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(31, 111, 235, 0.2);
+  z-index: 1001;
+  text-align: left;
+  white-space: normal;
+}
+
+.new-game-wrapper:hover .new-game-container,
+.new-game-container:hover {
+  display: block;
+}
+
+.game-setup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.how-to-play-container .how-to-play-popup {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #0d1b2a;
+  border: 1px solid #1f6feb;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(31, 111, 235, 0.2);
+  z-index: 1001;
+  text-align: left;
+  white-space: normal;
+  color: #c9d1d9;
+  font-size: 1rem; /* Lowered font size by 5% */
+  overflow-wrap: break-word;
+}
+
+.how-to-play-popup ul {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+
+.how-to-play-popup li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.new-game-container select {
+  width: 100%;
+  background: #0b131e;
+  color: #fff;
+  border: 1px solid #1f6feb;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.new-game-container select:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+}
+
+.new-game-container #start-btn {
+  width: 100%;
+  text-align: center;
+  background: #1f6feb;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.new-game-container #start-btn:hover {
+  background: #388bfd;
+  box-shadow: 0 0 10px rgba(56, 139, 253, 0.4);
+}
+
+/* How-To-Play Option Inside Dropdown */
+.hamburger-dropdown .how-to-play-container {
+  display: block;
+  position: relative;
+}
+
+.how-to-play-container:hover .how-to-play-popup,
+.how-to-play-popup:hover,
+.how-to-play-container.active .how-to-play-popup {
+  display: block;
+}
+
+.how-to-play-popup h3 {
+  color: #58a6ff;
+  margin-top: 0;
+}
+
+/* --- Interactive Hover Bridge Fix --- */
+.new-game-wrapper, 
+.how-to-play-container {
+  position: relative;
+}
+
+/* Invisible hover bridge covering the 12px gap so the cursor never loses hover */
+.new-game-wrapper::after,
+.how-to-play-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: transparent;
+}
+
+.new-game-wrapper:hover .new-game-container,
+.new-game-container:hover {
+  display: block;
+}
+
+.how-to-play-container:hover .how-to-play-popup,
+.how-to-play-popup:hover,
+.how-to-play-container.active .how-to-play-popup {
+  display: block;
+}
+
 .cleared-piles-section {
   display: flex;
   align-items: center;
@@ -79,14 +313,14 @@ body {
 
 .cleared-pile-card .card-corner .card-rank,
 .cleared-pile-card .card-corner .card-suit {
-  font-size: clamp(7px, 1.1vw, 12px);
+  font-size: clamp(12px, 1.1vw, 12px);
 }
 
 .cleared-pile-card .card-center-suit {
   font-size: clamp(12px, 2vw, 22px);
 }
 
-.badge-orange {
+.card-count-orange {
   top: -15%;
   right: -15%;
   background-color: #ff9800;
@@ -135,7 +369,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(13, 27, 42, 0.75);
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(88, 166, 255, 0.15);
   border-radius: 1vmin;
 }
 
@@ -173,7 +409,7 @@ body {
 
 .table-center {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -224,7 +460,7 @@ body {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.badge {
+.card-count {
   position: absolute;
   color: white;
   font-size: clamp(9px, 1.2vmin, 12px);
@@ -234,13 +470,13 @@ body {
   z-index: 2;
 }
 
-.badge-primary {
+.card-count-primary {
   top: -15%;
   right: -20%;
   background-color: #0d47a1;
 }
 
-.badge-secondary {
+.card-count-secondary {
   top: -15%;
   right: -70%;
   background-color: #c1121f;
@@ -338,20 +574,26 @@ body {
 .players-5 .seat-3 { top: -5%; right: 18%; }
 .players-5 .seat-4 { top: 45%; right: 5%; }
 
+#seats-container .avatar {
+  display: flex;
+  align-items: center;    /* Locks both items onto the same horizontal vertical plane */
+  gap: var(--spacing-sm); /* Controls space between the avatar and turn indicator */
+  margin-bottom: -1vmin; /* Controls the space below the entire group */
+}
+
 .avatar {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
   background: rgba(0, 0, 0, 0.6);
-  padding: 0.5vmin 1.5vmin;
+  padding: 1vmin 1.5vmin;
   border-radius: 2vmin;
-  margin-bottom: 0.6vmin;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .avatar-icon {
   width: clamp(20px, 3vmin, 32px);
-  height: clamp(20px, 3vmin, 32px);
+  height: clamp(0px, 3vmin, 32px);
   background: #424242;
   border-radius: 50%;
   display: flex;
@@ -390,6 +632,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5vmin;
+  margin-top: 1.5vmin;
 }
 
 .table-cards-stack {
@@ -436,6 +679,8 @@ body {
 #user-face-up-group {
   position: absolute;
   display: flex;
+  transform: scale(1.2);
+  transform-origin: bottom center;
   gap: 0.5vmin;
 }
 
@@ -560,7 +805,7 @@ body {
 .game-footer {
   background: none;
   border-radius: 0;
-  padding: 0;
+  /* padding: 0; */
   box-shadow: none;
   display: flex;
   flex-direction: column;
@@ -627,6 +872,46 @@ body {
 }
 
 .avatar.active-turn { animation: active-turn-blink 1.5s infinite ease-in-out; }
+
+/* --- Inviting Initial Start Button --- */
+#initial-start-btn {
+  background: #1f6feb;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  padding: 25px 40px;
+  border-radius: 50px;
+  font-size: clamp(16px, 7vmin, 20px);
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 15px rgba(31, 111, 235, 0.4);
+  animation: startButtonPulse 2s infinite ease-in-out;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#initial-start-btn:hover {
+  background: #388bfd;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(56, 139, 253, 0.8);
+}
+
+#initial-start-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes startButtonPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(31, 111, 235, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(88, 166, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(31, 111, 235, 0.4);
+  }
+}
 
 /* Victory Modal Overlay */
 #victory-overlay {
@@ -710,57 +995,198 @@ body {
   100% { transform: translateY(-12px); }
 }
 
-.how-to-play-container {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .how-to-play-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      text-decoration: underline;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .how-to-play-title:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    .how-to-play-popup {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 420px;
-      max-height: 500px;
-      overflow-y: auto;
-      background: #1a1a1a;
-      color: #f0f0f0;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      font-size: 1.02rem;
-      line-height: 1.5;
-      text-align: left;
-    }
-    .how-to-play-container:hover .how-to-play-popup,
-    .how-to-play-container.active .how-to-play-popup {
-      display: block;
-    }
-    .how-to-play-popup h3 {
-      margin-top: 0;
-      color: #ffd700;
-      border-bottom: 1px solid #444;
-      padding-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    .how-to-play-popup ul {
-      padding-left: 20px;
-      margin: 10px 0 0 0;
-    }
-    .how-to-play-popup li {
-      margin-bottom: 10px;
-    }
+/* --- Mobile Responsive / Portrait Layout (< 768px) --- */
+@media screen and (max-width: 768px) {
+  body {
+    overflow: hidden; /* Prevent body scrolling if contents fit the screen */
+  }
+
+  .game-container {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding: var(--spacing-sm);
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    overflow: hidden;
+  }
+
+  /* Transform table into a vertical layout */
+  .poker-table {
+    width: 75vw;
+    height: 65vh;
+    max-height: none;
+    border-radius: 25vw;
+    border-width: clamp(6px, 1.5vw, 12px);
+    margin: 5px auto;
+  }
+
+  /* Center stack cards slightly tighter for mobile */
+  .table-center {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: clamp(15px, 4vmin, 40px);
+    align-items: center;
+    z-index: 10;
+  }
+
+  .card-count-primary {
+    top: -20%;
+  }
+
+  .card-count-secondary {
+    top: -20%;
+  }
+
+  .cards-layout {
+    margin-top: -4vmin;
+  }
+
+  .hand-cards {
+    margin-top: 15%;
+  }
+
+  /* Reposition Player Seats in a Circular/Triangular Arch for Mobile */
+  .player-seat {
+    width: auto;
+    max-width: 75vw;
+  }
+
+  #seats-container .avatar {
+    display: flex;
+    align-items: center;    /* Locks both items onto the same horizontal vertical plane */
+    gap: var(--spacing-sm); /* Controls space between the avatar and turn indicator */
+    margin-bottom: 5vmin; /* Controls the space below the entire group */
+  }
+
+  /* User (Seat 0) stays locked at the bottom */
+  .seat-0 {
+    bottom: 0% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 92vw !important;
+  }
+
+  /* Give extra top padding on mobile so hovered cards aren't cut off */
+  .seat-0 .hand-cards {
+    padding-top: 8vmin !important;
+  }
+
+  .seat-0 #user-footer-cards-container {
+    padding-top: 4vmin;
+    margin-top: 2vmin;
+  }
+
+/* --- Sequential CPU Seat Layout Around the Table --- */
+
+  /* 2 Players: 1 CPU at Top Center */
+  .players-2 .seat-1 {
+    top: 2% !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* 3 Players: 2 CPUs (Top-Left and Top-Right) */
+  .players-3 .seat-1 {
+    top: 5% !important;
+    left: 20% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  .players-3 .seat-2 {
+    top: 5% !important;
+    left: auto !important;
+    right: 20% !important;
+    transform: translateX(50%) !important;
+  }
+
+  /* 4 Players: 3 CPUs (Left, Top, Right) */
+  .players-4 .seat-1 {
+    top: 25% !important;
+    left: -10% !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  .players-4 .seat-2 {
+    top: -5% !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  .players-4 .seat-3 {
+    top: 25% !important;
+    left: auto !important;
+    right: 0% !important;
+    transform: none !important;
+  }
+
+  /* 5 Players: 4 CPUs (Mid-Left, Top-Left, Top-Right, Mid-Right) */
+  .players-5 .seat-1 {
+    top: 35% !important;
+    left: -2% !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  .players-5 .seat-2 {
+    top: 2% !important;
+    left: 20% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  .players-5 .seat-3 {
+    top: 2% !important;
+    left: auto !important;
+    right: 20% !important;
+    transform: translateX(50%) !important;
+  }
+  .players-5 .seat-4 {
+    top: 35% !important;
+    left: auto !important;
+    right: -2% !important;
+    transform: none !important;
+  }
+
+  /* Increase user's face-up and face-down footer cards by 10% on mobile */
+  #user-footer-cards-container {
+    transform: scale(1.2);
+    transform-origin: center bottom;
+  }
+
+  /* Increase user's face-up and face-down footer cards size by 10% */
+  .seat-0 #user-footer-cards-container {
+    transform: translateX(-15%) scale(1.1);
+    transform-origin: center bottom;
+  }
+
+  /* Increase user's footer card font sizes by 10% */
+  .seat-0 #user-footer-cards-container .card-rank, 
+  .seat-0 #user-footer-cards-container .card-suit { 
+    font-size: clamp(9.9px, 1.65vmin, 15.4px); 
+  }
+
+  .seat-0 #user-footer-cards-container .card-center-suit {
+    font-size: clamp(17.6px, 2.75vmin, 28.6px);
+  }
+
+  .player-seat:not(.seat-0) .table-cards-stack {
+    transform: scale(1.1);
+    transform-origin: top center;
+  }
+
+  /* Optimize User hand scroll area for mobile screens */
+/* Give extra left padding on mobile so the first card doesn't clip on hover */
+  .seat-0 .hand-cards {
+    max-width: 92vw;
+    padding: 8vmin 1vmin 2vmin 4vmin; /* Added 4vmin of left padding */
+  }
+
+  /* Keep top bar compact */
+  .top-bar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

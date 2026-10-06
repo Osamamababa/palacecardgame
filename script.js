@@ -2,7 +2,7 @@
 const SUIT_SYMBOLS = { 'Hearts': '♥', 'Diamonds': '♦', 'Clubs': '♣', 'Spades': '♠' };
 const SUIT_COLORS = { 'Hearts': 'red', 'Diamonds': 'red', 'Clubs': 'black', 'Spades': 'black' };
 const RANKS = ['3', '4', '5', '6', '7', '8', '9', 'Jack', 'Queen', 'King', 'Ace', '2', '10'];
-const CPU_DELAY_MS = 1000;
+const CPU_DELAY_MS = 0;
 
 class Player {
   constructor(role, name, id) {
@@ -499,8 +499,6 @@ function playPalace() {
   buildPlayerSeats();
   renderTable();
   setupUserControls();
-
-  updateStatus(`The first move of the game belongs to: ${startingPlayer.name}!`);
 
   if (startingPlayer.role === 'cpu') {
     playCpuTurn();
@@ -1049,17 +1047,33 @@ async function playCpuTurn() {
 
 // --- How To Play Tooltip Fallback Handler ---
 document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerWrapper = document.getElementById('hamburger-menu-wrapper');
+  const hamburgerBtn = hamburgerWrapper?.querySelector('.hamburger-btn');
   const howToPlayWrapper = document.getElementById('how-to-play-wrapper');
+
+  // Toggle Hamburger Menu Dropdown
+  if (hamburgerBtn && hamburgerWrapper) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      hamburgerWrapper.classList.toggle('active');
+      e.stopPropagation();
+    });
+  }
+
+  // Toggle How-To-Play Popup
   if (howToPlayWrapper) {
     howToPlayWrapper.addEventListener('click', function(e) {
       this.classList.toggle('active');
       e.stopPropagation();
     });
   }
-  document.addEventListener('click', function() {
-    const wrapper = document.getElementById('how-to-play-wrapper');
-    if (wrapper) {
-      wrapper.classList.remove('active');
+
+  // Close all menus when clicking outside
+  document.addEventListener('click', () => {
+    if (hamburgerWrapper) {
+      hamburgerWrapper.classList.remove('active');
+    }
+    if (howToPlayWrapper) {
+      howToPlayWrapper.classList.remove('active');
     }
   });
 });

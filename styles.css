@@ -1038,7 +1038,7 @@ body {
   /* Center stack cards slightly tighter for mobile */
   .table-center {
     position: absolute;
-    top: 70%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -1138,7 +1138,7 @@ body {
   /* 4 Players: 3 CPUs (Left, Top, Right) */
   .players-4 .seat-1 {
     top: 30% !important;
-    left: -10% !important;
+    left: -5% !important;
     right: auto !important;
     transform: none !important;
   }
@@ -1149,10 +1149,10 @@ body {
     transform: translateX(-50%) !important;
   }
   .players-4 .seat-3 {
-    top: 16.5% !important;
+    top: -5% !important;
     left: auto !important;
-    right: 0% !important;
-    transform: none !important;
+    right: 20% !important;
+    transform: translateX(50%) !important;
   }
 
   /* 5 Players: 4 CPUs (Mid-Left, Top-Left, Top-Right, Mid-Right) */

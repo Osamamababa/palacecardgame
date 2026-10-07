@@ -2,7 +2,7 @@
 const SUIT_SYMBOLS = { 'Hearts': '♥', 'Diamonds': '♦', 'Clubs': '♣', 'Spades': '♠' };
 const SUIT_COLORS = { 'Hearts': 'red', 'Diamonds': 'red', 'Clubs': 'black', 'Spades': 'black' };
 const RANKS = ['3', '4', '5', '6', '7', '8', '9', 'Jack', 'Queen', 'King', 'Ace', '2', '10'];
-const CPU_DELAY_MS = 0;
+const CPU_DELAY_MS = 1000;
 
 class Player {
   constructor(role, name, id) {
@@ -200,7 +200,6 @@ function updateStatus(text = '') {
 function checkWinCondition(player) {
   if (player.totalCards() === 0) {
     gameOver = true;
-    updateStatus(`${player.name} wins the game!`);
     
     // Trigger the exciting centered victory modal
     const overlay = document.getElementById('victory-overlay');
@@ -272,12 +271,12 @@ function renderTable() {
       const cardEl = createCardElement(pile.topCard);
       cardEl.classList.add('cleared-pile-card');
 
-      const badge = document.createElement('span');
-      badge.className = 'badge badge-orange';
-      badge.innerText = pile.cards.length;
+      const card_count = document.createElement('span');
+      card_count.className = 'card-count card-count-orange';
+      card_count.innerText = pile.cards.length;
 
       wrapper.appendChild(cardEl);
-      wrapper.appendChild(badge);
+      wrapper.appendChild(card_count);
       clearedContainer.appendChild(wrapper);
     });
   }

@@ -19,6 +19,8 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0d1117;
   color: #ffffff;
@@ -35,8 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--spacing-lg);
-  
+  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Removed top padding (set to 0) */
 }
 
 /* --- Cleared/Burned Piles (Header Section) --- */
@@ -287,6 +288,8 @@ body {
   justify-content: center;
   width: 100%;
 }
+
+
 
 .cleared-piles-container {
   display: flex;
@@ -998,6 +1001,8 @@ body {
 /* --- Mobile Responsive / Portrait Layout (< 768px) --- */
 @media screen and (max-width: 768px) {
   body {
+    margin: 0;
+    padding: 0;
     overflow: hidden; /* Prevent body scrolling if contents fit the screen */
   }
 
@@ -1010,6 +1015,7 @@ body {
     justify-content: space-between;
     gap: var(--spacing-sm);
     overflow: hidden;
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Removed top padding (set to 0) */
   }
 
   /* Transform table into a vertical layout */
@@ -1025,7 +1031,7 @@ body {
   /* Center stack cards slightly tighter for mobile */
   .table-center {
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -1093,13 +1099,13 @@ body {
 
   /* 3 Players: 2 CPUs (Top-Left and Top-Right) */
   .players-3 .seat-1 {
-    top: 5% !important;
+    top: -5% !important;
     left: 20% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
   }
   .players-3 .seat-2 {
-    top: 5% !important;
+    top: 25% !important;
     left: auto !important;
     right: 20% !important;
     transform: translateX(50%) !important;
@@ -1127,25 +1133,25 @@ body {
 
   /* 5 Players: 4 CPUs (Mid-Left, Top-Left, Top-Right, Mid-Right) */
   .players-5 .seat-1 {
-    top: 35% !important;
+    top: 25% !important;
     left: -2% !important;
     right: auto !important;
     transform: none !important;
   }
   .players-5 .seat-2 {
-    top: 2% !important;
+    top: -10% !important;
     left: 20% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
   }
   .players-5 .seat-3 {
-    top: 2% !important;
+    top: -10% !important;
     left: auto !important;
     right: 20% !important;
     transform: translateX(50%) !important;
   }
   .players-5 .seat-4 {
-    top: 35% !important;
+    top: 25% !important;
     left: auto !important;
     right: -2% !important;
     transform: none !important;

@@ -1020,6 +1020,11 @@ body {
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Removed top padding (set to 0) */
   }
 
+  /* Keep top bar compact */
+  .top-bar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
   .card-count-orange {
     top: 85%;
     right: 85%;
@@ -1082,7 +1087,7 @@ body {
 
   /* User (Seat 0) stays locked at the bottom */
   .seat-0 {
-    bottom: -1% !important;
+    bottom: 1% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 92vw !important;
@@ -1206,10 +1211,5 @@ body {
   .player-seat:not(.seat-0) .table-cards-stack {
     transform: scale(1.1);
     transform-origin: top center;
-  }
-
-  /* Keep top bar compact */
-  .top-bar {
-    padding: var(--spacing-sm) var(--spacing-md);
   }
 }

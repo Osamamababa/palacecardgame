@@ -1032,7 +1032,7 @@ body {
     max-height: none;
     border-radius: 25vw;
     border-width: clamp(6px, 1.5vw, 12px);
-    margin: -10vh auto 0 auto;
+    margin: 0vh auto 0 auto;
   }
 
   /* Center stack cards slightly tighter for mobile */
@@ -1082,7 +1082,7 @@ body {
 
   /* User (Seat 0) stays locked at the bottom */
   .seat-0 {
-    bottom: -10% !important;
+    bottom: -1% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 92vw !important;
@@ -1097,12 +1097,12 @@ body {
   }
 
   #user-face-down-group {
-    top: -75%;
+    top: 10%;
     left: 0;
   }
 
   #user-face-up-group {
-    top: -60%;
+    top: 20%;
     left: 10%;
   }
 

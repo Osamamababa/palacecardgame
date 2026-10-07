@@ -1082,7 +1082,7 @@ body {
 
   /* User (Seat 0) stays locked at the bottom */
   .seat-0 {
-    bottom: -5% !important;
+    bottom: -10% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 92vw !important;

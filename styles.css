@@ -127,19 +127,22 @@ body {
 .hamburger-dropdown .new-game-title,
 .hamburger-dropdown .how-to-play-title {
   display: block;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 4px 0;
+  background: #0d1b2a; /* Dark blue background */
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  border-radius: 6px;
+  padding: 8px 14px;
   cursor: pointer;
   color: #ffffff;
   font-size: 1rem;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .hamburger-dropdown .new-game-title:hover,
 .hamburger-dropdown .how-to-play-title:hover {
-  background: transparent;
+  background: #162c46;
+  border-color: #58a6ff;
   color: #58a6ff;
 }
 
@@ -1016,6 +1019,11 @@ body {
     gap: var(--spacing-sm);
     overflow: hidden;
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Removed top padding (set to 0) */
+  }
+
+  .card-count-orange {
+    top: -20%;
+    right: -20%;
   }
 
   /* Transform table into a vertical layout */

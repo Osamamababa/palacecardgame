@@ -1038,7 +1038,7 @@ body {
   /* Center stack cards slightly tighter for mobile */
   .table-center {
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -1092,7 +1092,7 @@ body {
     /* Give extra left padding on mobile so the first card doesn't clip on hover */
   .seat-0 .hand-cards {
     max-width: 92vw;
-    padding: 9vmin 1vmin 0vmin 4vmin; /* Added 4vmin of left padding */
+    padding: 10vmin 1vmin 0vmin 4vmin; /* Added 4vmin of left padding */
     gap: 2vmin;
   }
 
@@ -1115,7 +1115,7 @@ body {
 
   /* 2 Players: 1 CPU at Top Center */
   .players-2 .seat-1 {
-    top: 2% !important;
+    top: 15% !important;
     left: 50% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
@@ -1137,7 +1137,7 @@ body {
 
   /* 4 Players: 3 CPUs (Left, Top, Right) */
   .players-4 .seat-1 {
-    top: 25% !important;
+    top: 35% !important;
     left: -10% !important;
     right: auto !important;
     transform: none !important;
@@ -1157,25 +1157,25 @@ body {
 
   /* 5 Players: 4 CPUs (Mid-Left, Top-Left, Top-Right, Mid-Right) */
   .players-5 .seat-1 {
-    top: 25% !important;
+    top: 30% !important;
     left: -2% !important;
     right: auto !important;
     transform: none !important;
   }
   .players-5 .seat-2 {
-    top: -10% !important;
+    top: -5% !important;
     left: 20% !important;
     right: auto !important;
     transform: translateX(-50%) !important;
   }
   .players-5 .seat-3 {
-    top: -10% !important;
+    top: -5% !important;
     left: auto !important;
     right: 20% !important;
     transform: translateX(50%) !important;
   }
   .players-5 .seat-4 {
-    top: 25% !important;
+    top: 30% !important;
     left: auto !important;
     right: -2% !important;
     transform: none !important;

@@ -151,7 +151,9 @@ body {
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
+  left: auto;
   width: 240px;
+  max-width: 90vw; /* Prevents container from overflowing smaller viewports */
   background: #0d1b2a;
   border: 1px solid #1f6feb;
   border-radius: 8px;
@@ -180,7 +182,9 @@ body {
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
+  left: auto;
   width: 320px;
+  max-width: calc(100vw - 32px); /* Ensures popup never exceeds screen width minus safe margins */
   max-height: 400px;
   overflow-y: auto;
   background: #0d1b2a;
@@ -192,8 +196,14 @@ body {
   text-align: left;
   white-space: normal;
   color: #c9d1d9;
-  font-size: 1rem; /* Lowered font size by 5% */
+  font-size: 1rem;
   overflow-wrap: break-word;
+}
+
+.how-to-play-container.flip-left .how-to-play-popup,
+.new-game-wrapper.flip-left .new-game-container {
+  right: auto;
+  left: 0;
 }
 
 .how-to-play-popup ul {

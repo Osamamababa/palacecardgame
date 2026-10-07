@@ -1009,15 +1009,18 @@ body {
   }
 
   .game-container {
+    width: 100vw;
     height: 100vh;
     height: 100dvh;
     max-height: 100vh;
     max-height: 100dvh;
-    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    gap: var(--spacing-sm);
+    align-items: stretch;
+    padding: 0 var(--spacing-lg) var(--spacing-sm) var(--spacing-lg); /* Strict 0 top padding */
+    margin: 0;
     overflow: hidden;
-    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); /* Removed top padding (set to 0) */
   }
 
   /* Keep top bar compact */
@@ -1085,20 +1088,19 @@ body {
     margin-top: -4vmin;
   }
 
-  /* User (Seat 0) stays locked at the bottom */
   .seat-0 {
-    bottom: 1% !important;
+    position: absolute !important;
+    bottom: 0px !important; /* Pins directly to the bottom screen boundary */
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 92vw !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
-    /* Optimize User hand scroll area for mobile screens */
-    /* Give extra left padding on mobile so the first card doesn't clip on hover */
   .seat-0 .hand-cards {
-    max-width: 92vw;
-    padding: 10vmin 1vmin 0vmin 4vmin; /* Added 4vmin of left padding */
-    gap: 2vmin;
+    margin-top: 0;
+    padding-bottom: 2px !important; /* Keeps cards flush against bottom boundary */
   }
 
   #user-face-down-group {

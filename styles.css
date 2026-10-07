@@ -1038,7 +1038,7 @@ body {
   /* Center stack cards slightly tighter for mobile */
   .table-center {
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;

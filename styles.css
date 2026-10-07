@@ -292,8 +292,6 @@ body {
   width: 100%;
 }
 
-
-
 .cleared-piles-container {
   display: flex;
   flex-direction: row;
@@ -327,8 +325,8 @@ body {
 }
 
 .card-count-orange {
-  top: -15%;
-  right: -15%;
+  top: 85%;
+  right: 85%;
   background-color: #ff9800;
   color: #ffffff;
   position: absolute;
@@ -620,6 +618,7 @@ body {
 
 .turn-indicator {
   color: #ffeb3b;
+  margin-top: -4vmin;
   font-size: clamp(11px, 1.4vmin, 15px);
   font-weight: bold;
   white-space: nowrap;
@@ -691,13 +690,13 @@ body {
 }
 
 #user-face-down-group {
-  top: 0;
+  top: -50%;
   left: 0;
 }
 
 #user-face-up-group {
-  top: 15%;
-  left: 15%;
+  top: -35%;
+  left: 10%;
 }
 
 /* Ensure footer cards scale and inherit normal card sizes just like CPU cards */
@@ -1022,8 +1021,8 @@ body {
   }
 
   .card-count-orange {
-    top: -20%;
-    right: -20%;
+    top: 85%;
+    right: 85%;
   }
 
   /* Transform table into a vertical layout */
@@ -1085,14 +1084,26 @@ body {
     width: 92vw !important;
   }
 
-  /* Give extra top padding on mobile so hovered cards aren't cut off */
+    /* Optimize User hand scroll area for mobile screens */
+    /* Give extra left padding on mobile so the first card doesn't clip on hover */
   .seat-0 .hand-cards {
-    padding-top: 8vmin !important;
+    max-width: 92vw;
+    padding: 9vmin 1vmin 2vmin 4vmin; /* Added 4vmin of left padding */
+  }
+
+  #user-face-down-group {
+    top: -60%;
+    left: 0;
+  }
+
+  #user-face-up-group {
+    top: -45%;
+    left: 10%;
   }
 
   .seat-0 #user-footer-cards-container {
     padding-top: 4vmin;
-    margin-top: 2vmin;
+    margin-top: 1vmin;
   }
 
 /* --- Sequential CPU Seat Layout Around the Table --- */
@@ -1190,13 +1201,6 @@ body {
   .player-seat:not(.seat-0) .table-cards-stack {
     transform: scale(1.1);
     transform-origin: top center;
-  }
-
-  /* Optimize User hand scroll area for mobile screens */
-/* Give extra left padding on mobile so the first card doesn't clip on hover */
-  .seat-0 .hand-cards {
-    max-width: 92vw;
-    padding: 8vmin 1vmin 2vmin 4vmin; /* Added 4vmin of left padding */
   }
 
   /* Keep top bar compact */

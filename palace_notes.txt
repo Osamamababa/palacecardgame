@@ -1,4 +1,0 @@
-1. Initial Start Button and user face down and face up cards are both falling off the screen
-2. CPU's face up and face down cards are too close to their hand cards
-3. Turn indicator too low
- 

@@ -1093,7 +1093,7 @@ body {
   .seat-0 .hand-cards {
     max-width: 92vw;
     padding: 9vmin 1vmin 0vmin 4vmin; /* Added 4vmin of left padding */
-    gap: 0.5vmin;
+    gap: 1.5vmin;
   }
 
   #user-face-down-group {

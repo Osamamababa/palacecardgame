@@ -1077,7 +1077,7 @@ body {
   }
 
   .turn-indicator {
-    margin-top: 2vmin;
+    margin-top: -4vmin;
   }
 
   /* User (Seat 0) stays locked at the bottom */
@@ -1097,12 +1097,12 @@ body {
   }
 
   #user-face-down-group {
-    top: -45%;
+    top: -55%;
     left: 0;
   }
 
   #user-face-up-group {
-    top: -30%;
+    top: -40%;
     left: 10%;
   }
 

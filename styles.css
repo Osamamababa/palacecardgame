@@ -1032,7 +1032,7 @@ body {
     max-height: none;
     border-radius: 25vw;
     border-width: clamp(6px, 1.5vw, 12px);
-    margin: -7.5vh auto 0 auto;
+    margin: -10vh auto 0 auto;
   }
 
   /* Center stack cards slightly tighter for mobile */
@@ -1096,12 +1096,12 @@ body {
   }
 
   #user-face-down-group {
-    top: -70%;
+    top: -90%;
     left: 0;
   }
 
   #user-face-up-group {
-    top: -55%;
+    top: -70%;
     left: 10%;
   }
 
